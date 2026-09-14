@@ -1,18 +1,376 @@
 
-<html>
+<html lang="nl">
 <head>
-    <title>Mijn website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nova Studio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATIE */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            background:
+                radial-gradient(circle at top, #1e3a8a, transparent 40%),
+                #0f172a;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #cbd5e1;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 30px;
+            background: #38bdf8;
+            color: #082f49;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+        }
+
+        /* SECTIES */
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #38bdf8;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #38bdf8;
+        }
+
+        .card .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .card p {
+            color: #94a3b8;
+        }
+
+        /* OVER ONS */
+        .about {
+            background: #111827;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            color: #cbd5e1;
+            font-size: 18px;
+        }
+
+        /* CONTACT */
+        .contact-form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #1e293b;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #020617;
+            color: #94a3b8;
+        }
+
+        /* MOBIEL */
+        @media (max-width: 800px) {
+            nav ul {
+                display: none;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 80px 6%;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Dit is header 1</h1>
-    <h2>Dit is header 2</h2>
-    <h3>Dit is header 3</h3>
-    <h4>Dit is header 4</h4>
-    <h5>Dit is header 5</h5>
-    <h6>Dit is header 6</h6>
+
+    <!-- NAVIGATIE -->
+    <nav>
+        <div class="logo">Nova<span>.</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#diensten">Diensten</a></li>
+            <li><a href="#over">Over ons</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welkom bij <span>Nova</span></h1>
+
+            <p>
+                Een moderne, snelle en professionele website
+                voor jouw volgende geweldige idee.
+            </p>
+
+            <a href="#diensten" class="button">
+                Ontdek meer
+            </a>
+        </div>
+    </section>
+
+    <!-- DIENSTEN -->
+    <section id="diensten">
+        <h2 class="section-title">
+            Onze <span>diensten</span>
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">💻</div>
+                <h3>Webdesign</h3>
+                <p>
+                    Moderne en aantrekkelijke websites die
+                    goed werken op computer, tablet en mobiel.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">⚡</div>
+                <h3>Snelheid</h3>
+                <p>
+                    Een snelle website zorgt voor een betere
+                    gebruikerservaring.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🚀</div>
+                <h3>Innovatie</h3>
+                <p>
+                    Moderne technologie en creatieve ideeën
+                    om jouw website uniek te maken.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- OVER ONS -->
+    <section class="about" id="over">
+        <div class="about-content">
+
+            <h2 class="section-title">
+                Over <span>Nova</span>
+            </h2>
+
+            <p>
+                Wij geloven dat een goede website niet alleen
+                mooi moet zijn, maar ook snel, duidelijk en
+                gebruiksvriendelijk.
+            </p>
+
+            <br>
+
+            <p>
+                Met moderne technologie bouwen we websites
+                die klaar zijn voor de toekomst.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <h2 class="section-title">
+            Neem <span>contact</span> op
+        </h2>
+
+        <form class="contact-form" onsubmit="verstuurBericht(event)">
+
+            <input
+                type="text"
+                placeholder="Je naam"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Je e-mail"
+                required
+            >
+
+            <textarea
+                placeholder="Je bericht..."
+                required
+            ></textarea>
+
+            <button class="button" type="submit">
+                Verstuur bericht
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Nova Studio. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <script>
+        function verstuurBericht(event) {
+            event.preventDefault();
+
+            alert("Bedankt! Je bericht is verzonden. 🚀");
+        }
+    </script>
+
 </body>
 </html>
-```
+
 
 
 
