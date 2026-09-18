@@ -1,34 +1,57 @@
+
 <html>
 <head>
 <style>
-body {
+body{
   margin:0;
   color:white;
   font-family:Arial;
-  background:linear-gradient(135deg,#05001a,#16004d,#000);
   min-height:100vh;
+  background:
+    radial-gradient(circle at 20% 30%,#6b00ff55,transparent 25%),
+    radial-gradient(circle at 80% 70%,#00aaff44,transparent 25%),
+    linear-gradient(135deg,#02000b,#10002b,#000);
 }
 
-nav {
-  background:rgba(0,0,30,.8);
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(white 1px,transparent 1px);
+  background-size:50px 50px;
+  opacity:.6;
+}
+
+nav{
+  position:relative;
+  background:#050014cc;
   padding:15px;
   text-align:center;
 }
 
-nav select { padding:8px; }
+select{
+  padding:10px;
+  background:#160044;
+  color:white;
+  border:1px solid #8844ff;
+}
 
-.info { padding:20px; }
+.info{
+  position:relative;
+  padding:30px;
+}
 
-.fotos {
+.fotos{
   position:absolute;
   right:20px;
   bottom:20px;
   display:grid;
-  grid-template-columns:repeat(2,100px);
+  grid-template-columns:100px 100px;
   gap:10px;
 }
 
-.fotos img {
+.fotos img{
   width:100px;
   height:100px;
   object-fit:cover;
@@ -43,14 +66,15 @@ nav select { padding:8px; }
   <select>
     <option>Menu</option>
     <option>Over mij</option>
-    <option>Hobby's</option>
+    <option>Mijn hobby's</option>
     <option>Contact</option>
   </select>
 </nav>
 
 <div class="info">
   <h1>Over mij</h1>
-  <p>Hoi! Ik ben Timo. Ik ben 15 jaar.</p>
+  <p>Hoi, mijn naam is Timo. Ik ben 15 jaar.</p>
+  <p>Mijn hobby's zijn gamen en slapen.</p>
 </div>
 
 <div class="fotos">
@@ -62,5 +86,6 @@ nav select { padding:8px; }
 
 </body>
 </html>
+
 
 
