@@ -1,16 +1,65 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+body {
+  margin:0;
+  color:white;
+  font-family:Arial;
+  background:linear-gradient(135deg,#05001a,#16004d,#000);
+  min-height:100vh;
+}
+
+nav {
+  background:rgba(0,0,30,.8);
+  padding:15px;
+  text-align:center;
+}
+
+nav select { padding:8px; }
+
+.info { padding:20px; }
+
+.fotos {
+  position:absolute;
+  right:20px;
+  bottom:20px;
+  display:grid;
+  grid-template-columns:repeat(2,100px);
+  gap:10px;
+}
+
+.fotos img {
+  width:100px;
+  height:100px;
+  object-fit:cover;
+  border-radius:10px;
+}
+</style>
+</head>
+
 <body>
 
-<h1>Over mij</h1>
-<p>Hoi! Ik ben timo. Ik ben 15 jaar en woon in voorschoten. 
-Mijn hobby's zijn gamen en  slapen.</p>
+<nav>
+  <select>
+    <option>Menu</option>
+    <option>Over mij</option>
+    <option>Hobby's</option>
+    <option>Contact</option>
+  </select>
+</nav>
 
-<select>
-  <option>Over mij</option>
-  <option>Mijn hobby's</option>
-  <option>Mijn school</option>
-</select>
+<div class="info">
+  <h1>Over mij</h1>
+  <p>Hoi! Ik ben [jouw naam]. Ik ben [leeftijd] jaar.</p>
+</div>
+
+<div class="fotos">
+  <img src="plaatje1.jpg">
+  <img src="plaatje2.jpg">
+  <img src="plaatje3.jpg">
+  <img src="plaatje4.jpg">
+</div>
 
 </body>
 </html>
