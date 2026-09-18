@@ -1,89 +1,178 @@
-<html>
+```html
+<!DOCTYPE html>
+<html lang="nl">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Over mij - Timo</title>
+
 <style>
-body{
-  margin:0;
-  color:white;
-  font-family:Arial;
-  min-height:100vh;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: white;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+
   background:
-    radial-gradient(circle at 20% 30%,#6b00ff55,transparent 25%),
-    radial-gradient(circle at 80% 70%,#00aaff44,transparent 25%),
-    linear-gradient(135deg,#02000b,#10002b,#000);
+    radial-gradient(circle at 20% 30%, #6b00ff55, transparent 25%),
+    radial-gradient(circle at 80% 70%, #00aaff44, transparent 25%),
+    linear-gradient(135deg, #02000b, #10002b, #000);
 }
 
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background-image:
-    radial-gradient(white 1px,transparent 1px);
-  background-size:50px 50px;
-  opacity:.6;
+/* Sterren */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: .6;
+  pointer-events: none;
 }
 
-nav{
-  position:relative;
-  background:#050014cc;
-  padding:15px;
-  text-align:center;
+/* MENU OVER DE HELE BOVENKANT */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+
+  background: #050014ee;
+  padding: 15px 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: 1px solid #8844ff;
+  backdrop-filter: blur(10px);
+
+  z-index: 1000;
 }
 
-select{
-  padding:10px;
-  background:#160044;
-  color:white;
-  border:1px solid #8844ff;
+select {
+  padding: 10px 20px;
+  background: #160044;
+  color: white;
+  border: 1px solid #8844ff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.info{
-  position:relative;
-  padding:30px;
+/* INFORMATIE */
+.info {
+  position: relative;
+  max-width: 800px;
+  padding: 110px 30px 30px;
+  margin: auto;
 }
 
-.fotos{
-  position:absolute;
-  right:20px;
-  bottom:20px;
-  display:grid;
-  grid-template-columns:100px 100px;
-  gap:10px;
+.info h1 {
+  font-size: 45px;
+  text-shadow: 0 0 20px #8844ff;
 }
 
-.fotos img{
-  width:100px;
-  height:100px;
-  object-fit:cover;
-  border-radius:10px;
+.info p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* FOTO'S */
+.fotos {
+  position: relative;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 30px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.fotos img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #8844ff;
+
+  transition: transform .3s, box-shadow .3s;
+}
+
+.fotos img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #8844ff;
+}
+
+/* MOBIEL */
+@media (max-width: 600px) {
+  .info h1 {
+    font-size: 35px;
+  }
+
+  .fotos {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>
 </head>
+
 <body>
 
+<!-- MENU -->
 <nav>
-  <select>
-    <option>Menu</option>
-    <option>Over mij</option>
-    <option>Mijn hobby's</option>
-    <option>Contact</option>
+  <select onchange="navigate(this.value)">
+    <option value="">Menu</option>
+    <option value="over-mij">Over mij</option>
+    <option value="hobbys">Mijn hobby's</option>
+    <option value="contact">Contact</option>
   </select>
 </nav>
 
-<div class="info">
+<!-- INHOUD -->
+<div class="info" id="over-mij">
   <h1>Over mij</h1>
+
   <p>Hoi, mijn naam is Timo. Ik ben 15 jaar.</p>
+
   <p>Mijn hobby's zijn gamen en slapen.</p>
 </div>
 
+<!-- FOTO'S -->
 <div class="fotos">
-  <img src="plaatje1.jpg">
-  <img src="plaatje2.jpg">
-  <img src="plaatje3.jpg">
-  <img src="plaatje4.jpg">
+  <img src="plaatje1.jpg" alt="Foto 1">
+  <img src="plaatje2.jpg" alt="Foto 2">
+  <img src="plaatje3.jpg" alt="Foto 3">
+  <img src="plaatje4.jpg" alt="Foto 4">
 </div>
+
+<script>
+function navigate(page) {
+
+  if (page === "over-mij") {
+    document.getElementById("over-mij").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+
+  if (page === "hobbys") {
+    alert("Mijn hobby's zijn gamen en slapen!");
+  }
+
+  if (page === "contact") {
+    alert("Je kunt hier later je contactgegevens toevoegen.");
+  }
+
+}
+</script>
 
 </body>
 </html>
-
-
-
+```
