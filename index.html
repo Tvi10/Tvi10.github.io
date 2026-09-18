@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -35,7 +34,7 @@ body::before {
   pointer-events: none;
 }
 
-/* MENU OVER DE HELE BOVENKANT */
+/* MENU */
 nav {
   position: fixed;
   top: 0;
@@ -44,26 +43,69 @@ nav {
   height: 70px;
 
   background: #050014ee;
-  padding: 15px 30px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   border-bottom: 1px solid #8844ff;
   backdrop-filter: blur(10px);
 
   z-index: 1000;
 }
 
-select {
-  padding: 10px 20px;
-  background: #160044;
+/* HELE BOVENKANT IS DE KNOP */
+.menu-knop {
+  width: 100%;
+  height: 70px;
+
+  background: transparent;
   color: white;
-  border: 1px solid #8844ff;
-  border-radius: 8px;
+  border: none;
+
+  font-size: 20px;
+  font-weight: bold;
+
   cursor: pointer;
-  font-size: 16px;
+  text-shadow: 0 0 10px #8844ff;
+}
+
+.menu-knop:hover {
+  background: #160044;
+}
+
+/* UITKLAPMENU */
+.menu {
+  display: none;
+
+  position: absolute;
+  top: 70px;
+  left: 0;
+
+  width: 100%;
+
+  background: #080018f5;
+  border-bottom: 1px solid #8844ff;
+  backdrop-filter: blur(10px);
+}
+
+.menu.open {
+  display: block;
+}
+
+/* MENU KNOPPEN */
+.menu button {
+  width: 100%;
+  padding: 18px;
+
+  background: transparent;
+  color: white;
+
+  border: none;
+  border-bottom: 1px solid #331466;
+
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.menu button:hover {
+  background: #160044;
+  text-shadow: 0 0 10px #8844ff;
 }
 
 /* INFORMATIE */
@@ -100,6 +142,7 @@ select {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
+
   border-radius: 12px;
   border: 1px solid #8844ff;
 
@@ -128,49 +171,94 @@ select {
 
 <!-- MENU -->
 <nav>
-  <select onchange="navigate(this.value)">
-    <option value="">Menu</option>
-    <option value="over-mij">Over mij</option>
-    <option value="hobbys">Mijn hobby's</option>
-    <option value="contact">Contact</option>
-  </select>
+
+  <!-- HELE BOVENKANT IS KLIKBAAR -->
+  <button class="menu-knop" onclick="toggleMenu()">
+    ☰ Menu
+  </button>
+
+  <!-- MENU OPTIES -->
+  <div class="menu" id="menu">
+
+    <button onclick="navigate('over-mij')">
+      Over mij
+    </button>
+
+    <button onclick="navigate('hobbys')">
+      Mijn hobby's
+    </button>
+
+    <button onclick="navigate('contact')">
+      Contact
+    </button>
+
+  </div>
+
 </nav>
+
 
 <!-- INHOUD -->
 <div class="info" id="over-mij">
+
   <h1>Over mij</h1>
 
   <p>Hoi, mijn naam is Timo. Ik ben 15 jaar.</p>
 
   <p>Mijn hobby's zijn gamen en slapen.</p>
+
 </div>
+
 
 <!-- FOTO'S -->
 <div class="fotos">
+
   <img src="plaatje1.jpg" alt="Foto 1">
   <img src="plaatje2.jpg" alt="Foto 2">
   <img src="plaatje3.jpg" alt="Foto 3">
   <img src="plaatje4.jpg" alt="Foto 4">
+
 </div>
 
+
 <script>
+
+/* MENU OPENEN / SLUITEN */
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("open");
+}
+
+
+/* MENU NAVIGATIE */
 function navigate(page) {
 
+  // Menu sluiten
+  document.getElementById("menu").classList.remove("open");
+
+  // Over mij
   if (page === "over-mij") {
+
     document.getElementById("over-mij").scrollIntoView({
       behavior: "smooth"
     });
+
   }
 
+  // Hobby's
   if (page === "hobbys") {
+
     alert("Mijn hobby's zijn gamen en slapen!");
+
   }
 
+  // Contact
   if (page === "contact") {
+
     alert("Je kunt hier later je contactgegevens toevoegen.");
+
   }
 
 }
+
 </script>
 
 </body>
