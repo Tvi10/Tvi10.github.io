@@ -1,38 +1,98 @@
+```html
 <!DOCTYPE html>
 <html lang="nl">
 
 <head>
     <meta charset="UTF-8">
+
+    <!-- Zorgt ervoor dat de website goed werkt op telefoon en computer -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kunstmatige Intelligentie</title>
+    <title>Mijn Informatica Website</title>
 
     <style>
+        /* =========================
+           ALGEMENE OPMAAK
+           ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #eef4ff;
             color: #222;
             line-height: 1.6;
+
+            /* De foto staat als achtergrond op de pagina */
+            background-image: url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
+
+            /* De achtergrond vult het scherm */
+            background-size: cover;
+
+            /* De achtergrond blijft op dezelfde plek */
+            background-position: center;
+
+            /* De achtergrond blijft zichtbaar tijdens het scrollen */
+            background-attachment: fixed;
+
+            /* Achtergrondkleur voor als de afbeelding niet geladen kan worden */
+            background-color: #eef4ff;
         }
+
+        /* =========================
+           LICHTE LAAG OVER DE FOTO
+           ========================= */
+
+        /* Deze laag zorgt ervoor dat de foto niet te opvallend is */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            /* Witte, half-transparante laag */
+            background-color: rgba(255, 255, 255, 0.72);
+
+            /* De laag komt achter de tekst */
+            z-index: -1;
+        }
+
+        /* =========================
+           HEADER
+           ========================= */
 
         header {
             background: linear-gradient(135deg, #2563eb, #7c3aed);
             color: white;
             text-align: center;
-            padding: 35px;
+            padding: 40px 20px;
         }
+
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           MENU
+           ========================= */
 
         nav {
             background-color: #172554;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         nav a {
-            display: inline-block;
             color: white;
             text-decoration: none;
-            padding: 15px;
+            padding: 16px 20px;
             font-weight: bold;
         }
 
@@ -40,178 +100,127 @@
             background-color: #2563eb;
         }
 
+        /* =========================
+           INHOUD
+           ========================= */
+
         main {
             max-width: 1000px;
-            margin: auto;
-            padding: 25px;
+            margin: 30px auto;
+            padding: 20px;
         }
 
+        /* Witte tekstblokken */
         .kaart {
-            background-color: white;
-            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.94);
+            padding: 30px;
             margin-bottom: 25px;
             border-radius: 15px;
-            box-shadow: 0 4px 12px #bbb;
+
+            /* Schaduw rond de tekstblokken */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
 
         h2 {
             color: #2563eb;
         }
 
-        .belangrijk {
-            background-color: #e0e7ff;
-            padding: 20px;
-            border-left: 6px solid #7c3aed;
-            border-radius: 10px;
-        }
-
-        iframe {
-            width: 100%;
-            max-width: 800px;
-            height: 450px;
-            border: none;
-            border-radius: 12px;
-            display: block;
-            margin: 20px auto;
-        }
+        /* =========================
+           FOOTER
+           ========================= */
 
         footer {
             background-color: #172554;
             color: white;
             text-align: center;
             padding: 20px;
+            margin-top: 30px;
         }
     </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Kunstmatige Intelligentie</h1>
-    <p>AI in het dagelijks leven</p>
-</header>
+    <!-- Bovenkant van de website -->
+    <header>
+        <h1>Mijn Informatica Website</h1>
+        <p>Welkom op mijn website over informatica!</p>
+    </header>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="invoer.html">Invoer/Verwerking/Uitvoer</a>
-    <a href="binair.html">Binair</a>
-    <a href="kleurmodellen.html">Kleurmodellen</a>
-    <a href="compressie.html">Compressie</a>
-    <a href="ai.html">AI</a>
-</nav>
+    <!-- Navigatiemenu -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="invoer.html">Invoer - Verwerking - Uitvoer</a>
+        <a href="binair.html">Binair</a>
+        <a href="kleurmodellen.html">Kleurmodellen</a>
+        <a href="compressie.html">Compressie</a>
+        <a href="ai.html">AI</a>
+    </nav>
 
-<main>
+    <!-- Belangrijkste inhoud -->
+    <main>
 
-    <section class="kaart">
+        <section class="kaart">
 
-        <h2>Wat is AI?</h2>
-
-        <p>
-            AI staat voor kunstmatige intelligentie.
-            Het is technologie waarmee computers taken kunnen uitvoeren
-            waarvoor normaal gesproken menselijke intelligentie nodig is.
-        </p>
-
-        <p>
-            Een AI-systeem kan bijvoorbeeld tekst begrijpen,
-            afbeeldingen herkennen, voorspellingen maken of antwoorden
-            geven op vragen.
-        </p>
-
-    </section>
-
-    <section class="kaart">
-
-        <h2>Waar gebruik ik AI voor?</h2>
-
-        <div class="belangrijk">
+            <h2>Over mij</h2>
 
             <p>
-                Ik gebruik AI vooral voor mijn <strong>huiswerk</strong>.
-                Ik kan bijvoorbeeld uitleg vragen wanneer ik iets niet
-                begrijp.
+                Hallo! Welkom op mijn informatica website.
+                Op deze website vertel ik over verschillende onderwerpen
+                die te maken hebben met informatica en computers.
             </p>
 
             <p>
-                AI kan mij helpen om een onderwerp op een andere manier
-                uit te leggen. Daardoor kan ik soms beter begrijpen
-                hoe iets werkt.
+                Ik vind het interessant om te leren hoe computers werken
+                en hoe technologie steeds verder wordt ontwikkeld.
+                Op deze website leg ik verschillende onderwerpen uit
+                op een eenvoudige manier.
             </p>
+
+        </section>
+
+        <section class="kaart">
+
+            <h2>Waar gaat deze website over?</h2>
 
             <p>
-                Ik vind het wel belangrijk om niet zomaar een antwoord
-                over te nemen. Ik probeer eerst te begrijpen wat AI
-                uitlegt en controleer belangrijke informatie.
+                Op de verschillende pagina's behandel ik onder andere:
             </p>
 
-        </div>
+            <ul>
+                <li>Invoer, verwerking en uitvoer</li>
+                <li>Het binaire stelsel</li>
+                <li>Kleurmodellen</li>
+                <li>Compressie en het verschil tussen bitmap en vector</li>
+                <li>Kunstmatige intelligentie (AI)</li>
+            </ul>
 
-    </section>
+            <p>
+                Bij ieder onderwerp staat ook een korte video die helpt
+                om het onderwerp beter te begrijpen.
+            </p>
 
-    <section class="kaart">
+        </section>
 
-        <h2>Mijn telefoon: Google Pixel 9a</h2>
+        <section class="kaart">
 
-        <p>
-            Ik heb een <strong>Google Pixel 9a</strong>.
-            Moderne smartphones gebruiken steeds meer AI-functies.
-        </p>
+            <h2>Veel plezier!</h2>
 
-        <p>
-            AI kan op een telefoon bijvoorbeeld helpen bij foto's,
-            spraakherkenning, vertalingen en verschillende functies
-            die informatie automatisch herkennen of verwerken.
-        </p>
+            <p>
+                Gebruik het menu bovenaan om door mijn website te navigeren.
+                Op iedere pagina vind je uitleg, afbeeldingen en een video.
+            </p>
 
-        <p>
-            Hierdoor zit kunstmatige intelligentie tegenwoordig niet
-            alleen in computers of websites, maar ook gewoon in
-            smartphones die mensen dagelijks gebruiken.
-        </p>
+        </section>
 
-    </section>
+    </main>
 
-    <section class="kaart">
-
-        <h2>Waarom is AI interessant?</h2>
-
-        <p>
-            AI ontwikkelt zich snel en wordt steeds vaker gebruikt.
-            Daarom is het belangrijk om te leren hoe AI werkt en
-            hoe je er verstandig mee kunt omgaan.
-        </p>
-
-        <p>
-            AI kan handig zijn als hulpmiddel om iets te leren,
-            maar het is ook belangrijk om zelf na te blijven denken
-            en informatie te controleren.
-        </p>
-
-    </section>
-
-    <section class="kaart">
-
-        <h2>Video</h2>
-
-        <p>
-            Ik heb deze video toegevoegd omdat hij op een begrijpelijke
-            manier uitlegt wat kunstmatige intelligentie is en hoe AI
-            in het dagelijks leven wordt gebruikt.
-        </p>
-
-        <iframe
-            src="https://www.youtube.com/embed/2ePf9rue1Ao"
-            title="Video over kunstmatige intelligentie"
-            allowfullscreen>
-        </iframe>
-
-    </section>
-
-</main>
-
-<footer>
-    <p>Mijn Informatica Website</p>
-</footer>
+    <!-- Onderkant van de website -->
+    <footer>
+        <p>Mijn Informatica Website - Gemaakt met HTML</p>
+    </footer>
 
 </body>
+
 </html>
+```
