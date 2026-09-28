@@ -2,82 +2,254 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dobbelsteen Game</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Poker</title>
+
+<style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #f2f2f2;
-      padding-top: 80px;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #075e36;
+        color: white;
+        text-align: center;
     }
 
-    .game {
-      background: white;
-      max-width: 400px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px #bbb;
+    h1 {
+        margin-top: 30px;
     }
 
-    #dice {
-      font-size: 80px;
-      margin: 20px;
+    #game {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 25px;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 25px 0;
+    }
+
+    .card {
+        width: 80px;
+        height: 115px;
+        background: white;
+        color: black;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        box-shadow: 0 4px 8px rgba(0,0,0,.3);
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .card.red {
+        color: #d00;
+    }
+
+    .card.held {
+        transform: translateY(-15px);
+        border: 4px solid gold;
     }
 
     button {
-      padding: 12px 25px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      background: #4CAF50;
-      color: white;
-      cursor: pointer;
+        padding: 12px 25px;
+        margin: 8px;
+        border: none;
+        border-radius: 8px;
+        font-size: 17px;
+        cursor: pointer;
     }
 
-    button:hover {
-      background: #45a049;
+    #drawButton {
+        background: #ffd700;
     }
 
-    #result {
-      font-size: 20px;
-      margin-top: 20px;
+    #newButton {
+        background: #fff;
     }
-  </style>
+
+    #message {
+        font-size: 20px;
+        min-height: 30px;
+    }
+</style>
 </head>
 
 <body>
 
-  <div class="game">
-    <h1>🎲 Dobbelsteen</h1>
-    <p>Gooi de dobbelsteen!</p>
+<div id="game">
+    <h1>🃏 Mini Poker</h1>
+    <p>Klik op kaarten om ze vast te houden.</p>
 
-    <div id="dice">⚀</div>
+    <div id="cards" class="cards"></div>
 
-    <button onclick="rollDice()">Gooien</button>
+    <button id="drawButton" onclick="drawCards()">Nieuwe kaarten</button>
+    <button id="newButton" onclick="newGame()">Nieuw spel</button>
 
-    <p id="result"></p>
-  </div>
+    <p id="message"></p>
+</div>
 
-  <script>
-    const diceFaces = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+<script>
+const suits = [
+    { symbol: "♥", red: true },
+    { symbol: "♦", red: true },
+    { symbol: "♣", red: false },
+    { symbol: "♠", red: false }
+];
 
-    function rollDice() {
-      const number = Math.floor(Math.random() * 6) + 1;
+const values = [
+    { name: "2", value: 2 },
+    { name: "3", value: 3 },
+    { name: "4", value: 4 },
+    { name: "5", value: 5 },
+    { name: "6", value: 6 },
+    { name: "7", value: 7 },
+    { name: "8", value: 8 },
+    { name: "9", value: 9 },
+    { name: "10", value: 10 },
+    { name: "J", value: 11 },
+    { name: "Q", value: 12 },
+    { name: "K", value: 13 },
+    { name: "A", value: 14 }
+];
 
-      document.getElementById("dice").textContent = diceFaces[number - 1];
+let deck = [];
+let hand = [];
+let held = [];
 
-      if (number === 6) {
-        document.getElementById("result").textContent =
-          "🎉 Je gooide een 6!";
-      } else {
-        document.getElementById("result").textContent =
-          "Je gooide " + number + ".";
-      }
+function createDeck() {
+    deck = [];
+
+    for (let suit of suits) {
+        for (let value of values) {
+            deck.push({
+                suit: suit.symbol,
+                red: suit.red,
+                name: value.name,
+                value: value.value
+            });
+        }
     }
-  </script>
+
+    deck.sort(() => Math.random() - 0.5);
+}
+
+function newGame() {
+    createDeck();
+    hand = [];
+    held = [false, false, false, false, false];
+
+    for (let i = 0; i < 5; i++) {
+        hand.push(deck.pop());
+    }
+
+    document.getElementById("message").textContent =
+        "Kies kaarten om vast te houden en klik daarna op Nieuwe kaarten.";
+
+    renderCards();
+}
+
+function renderCards() {
+    const container = document.getElementById("cards");
+    container.innerHTML = "";
+
+    hand.forEach((card, index) => {
+        const div = document.createElement("div");
+
+        div.className = "card";
+
+        if (card.red) {
+            div.classList.add("red");
+        }
+
+        if (held[index]) {
+            div.classList.add("held");
+        }
+
+        div.textContent = card.name + card.suit;
+
+        div.onclick = () => {
+            held[index] = !held[index];
+            renderCards();
+        };
+
+        container.appendChild(div);
+    });
+}
+
+function drawCards() {
+    createDeck();
+
+    for (let i = 0; i < 5; i++) {
+        if (!held[i]) {
+            hand[i] = deck.pop();
+        }
+    }
+
+    const result = getHandResult(hand);
+
+    document.getElementById("message").textContent =
+        "Je hand: " + result;
+
+    held = [false, false, false, false, false];
+
+    renderCards();
+}
+
+function getHandResult(cards) {
+    const counts = {};
+
+    cards.forEach(card => {
+        counts[card.value] = (counts[card.value] || 0) + 1;
+    });
+
+    const numbers = cards
+        .map(card => card.value)
+        .sort((a, b) => a - b);
+
+    const flush = cards.every(card => card.suit === cards[0].suit);
+
+    let straight = true;
+
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] !== numbers[i - 1] + 1) {
+            straight = false;
+        }
+    }
+
+    // Aas-laag straat
+    if (
+        numbers[0] === 2 &&
+        numbers[1] === 3 &&
+        numbers[2] === 4 &&
+        numbers[3] === 5 &&
+        numbers[4] === 14
+    ) {
+        straight = true;
+    }
+
+    const groups = Object.values(counts).sort((a, b) => b - a);
+
+    if (straight && flush) return "Straight Flush! 🏆";
+    if (groups[0] === 4) return "Four of a Kind! 🎉";
+    if (groups[0] === 3 && groups[1] === 2) return "Full House! 🎉";
+    if (flush) return "Flush! 🃏";
+    if (straight) return "Straight! 🃏";
+    if (groups[0] === 3) return "Three of a Kind!";
+    if (groups[0] === 2 && groups[1] === 2) return "Two Pair!";
+    if (groups[0] === 2) return "One Pair!";
+
+    return "High Card";
+}
+
+newGame();
+</script>
 
 </body>
 </html>
