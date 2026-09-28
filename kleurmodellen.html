@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kleurmodellen</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eef4ff;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 35px;
+        }
+
+        nav {
+            background-color: #172554;
+            text-align: center;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #2563eb;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        .kaart {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px #bbb;
+        }
+
+        h2 {
+            color: #2563eb;
+        }
+
+        .kleuren {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 25px;
+        }
+
+        .kleur {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .rood {
+            background-color: red;
+        }
+
+        .groen {
+            background-color: green;
+        }
+
+        .blauw {
+            background-color: blue;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            border-radius: 12px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        footer {
+            background-color: #172554;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Kleurmodellen</h1>
+    <p>Hoe computers kleuren weergeven</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="invoer.html">Invoer/Verwerking/Uitvoer</a>
+    <a href="binair.html">Binair</a>
+    <a href="kleurmodellen.html">Kleurmodellen</a>
+    <a href="compressie.html">Compressie</a>
+    <a href="ai.html">AI</a>
+</nav>
+
+<main>
+
+    <section class="kaart">
+
+        <h2>RGB</h2>
+
+        <p>
+            RGB staat voor <strong>Rood, Groen en Blauw</strong>.
+            Dit kleurmodel wordt veel gebruikt bij beeldschermen.
+        </p>
+
+        <p>
+            Door rood, groen en blauw in verschillende hoeveelheden
+            te combineren kunnen miljoenen verschillende kleuren
+            worden gemaakt.
+        </p>
+
+        <div class="kleuren">
+
+            <div class="kleur rood">ROOD</div>
+
+            <div class="kleur groen">GROEN</div>
+
+            <div class="kleur blauw">BLAUW</div>
+
+        </div>
+
+    </section>
+
+    <section class="kaart">
+
+        <h2>CMYK</h2>
+
+        <p>
+            CMYK wordt vooral gebruikt bij printers.
+            De letters staan voor:
+        </p>
+
+        <ul>
+            <li>Cyaan</li>
+            <li>Magenta</li>
+            <li>Yellow (geel)</li>
+            <li>Key/zwart</li>
+        </ul>
+
+        <p>
+            RGB is dus vooral bedoeld voor schermen,
+            terwijl CMYK veel wordt gebruikt voor drukwerk.
+        </p>
+
+    </section>
+
+    <section class="kaart">
+
+        <h2>Video</h2>
+
+        <p>
+            Ik heb deze video toegevoegd omdat hij duidelijk laat zien
+            hoe RGB-kleuren worden gecombineerd om andere kleuren te maken.
+        </p>
+
+        <iframe
+            src="https://www.youtube.com/embed/3k7a4g0v7fE"
+            title="Video over kleurmodellen"
+            allowfullscreen>
+        </iframe>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Mijn Informatica Website</p>
+</footer>
+
+</body>
+</html>
