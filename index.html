@@ -1,265 +1,84 @@
+```html
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dobbelsteen Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f2f2f2;
+      padding-top: 80px;
+    }
 
-<title>Over mij - Timo</title>
+    .game {
+      background: white;
+      max-width: 400px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px #bbb;
+    }
 
-<style>
-* {
-  box-sizing: border-box;
-}
+    #dice {
+      font-size: 80px;
+      margin: 20px;
+    }
 
-body {
-  margin: 0;
-  color: white;
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
 
-  background:
-    radial-gradient(circle at 20% 30%, #6b00ff55, transparent 25%),
-    radial-gradient(circle at 80% 70%, #00aaff44, transparent 25%),
-    linear-gradient(135deg, #02000b, #10002b, #000);
-}
+    button:hover {
+      background: #45a049;
+    }
 
-/* Sterren */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(white 1px, transparent 1px);
-  background-size: 50px 50px;
-  opacity: .6;
-  pointer-events: none;
-}
-
-/* MENU */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-
-  background: #050014ee;
-  border-bottom: 1px solid #8844ff;
-  backdrop-filter: blur(10px);
-
-  z-index: 1000;
-}
-
-/* HELE BOVENKANT IS DE KNOP */
-.menu-knop {
-  width: 100%;
-  height: 70px;
-
-  background: transparent;
-  color: white;
-  border: none;
-
-  font-size: 20px;
-  font-weight: bold;
-
-  cursor: pointer;
-  text-shadow: 0 0 10px #8844ff;
-}
-
-.menu-knop:hover {
-  background: #160044;
-}
-
-/* UITKLAPMENU */
-.menu {
-  display: none;
-
-  position: absolute;
-  top: 70px;
-  left: 0;
-
-  width: 100%;
-
-  background: #080018f5;
-  border-bottom: 1px solid #8844ff;
-  backdrop-filter: blur(10px);
-}
-
-.menu.open {
-  display: block;
-}
-
-/* MENU KNOPPEN */
-.menu button {
-  width: 100%;
-  padding: 18px;
-
-  background: transparent;
-  color: white;
-
-  border: none;
-  border-bottom: 1px solid #331466;
-
-  font-size: 17px;
-  cursor: pointer;
-}
-
-.menu button:hover {
-  background: #160044;
-  text-shadow: 0 0 10px #8844ff;
-}
-
-/* INFORMATIE */
-.info {
-  position: relative;
-  max-width: 800px;
-  padding: 110px 30px 30px;
-  margin: auto;
-}
-
-.info h1 {
-  font-size: 45px;
-  text-shadow: 0 0 20px #8844ff;
-}
-
-.info p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-/* FOTO'S */
-.fotos {
-  position: relative;
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 0 30px;
-
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-}
-
-.fotos img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-
-  border-radius: 12px;
-  border: 1px solid #8844ff;
-
-  transition: transform .3s, box-shadow .3s;
-}
-
-.fotos img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #8844ff;
-}
-
-/* MOBIEL */
-@media (max-width: 600px) {
-  .info h1 {
-    font-size: 35px;
-  }
-
-  .fotos {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-</style>
+    #result {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- MENU -->
-<nav>
+  <div class="game">
+    <h1>🎲 Dobbelsteen</h1>
+    <p>Gooi de dobbelsteen!</p>
 
-  <!-- HELE BOVENKANT IS KLIKBAAR -->
-  <button class="menu-knop" onclick="toggleMenu()">
-    ☰ Menu
-  </button>
+    <div id="dice">⚀</div>
 
-  <!-- MENU OPTIES -->
-  <div class="menu" id="menu">
+    <button onclick="rollDice()">Gooien</button>
 
-    <button onclick="navigate('over-mij')">
-      Over mij
-    </button>
-
-    <button onclick="navigate('hobbys')">
-      Mijn hobby's
-    </button>
-
-    <button onclick="navigate('contact')">
-      Contact
-    </button>
-
+    <p id="result"></p>
   </div>
 
-</nav>
+  <script>
+    const diceFaces = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
 
+    function rollDice() {
+      const number = Math.floor(Math.random() * 6) + 1;
 
-<!-- INHOUD -->
-<div class="info" id="over-mij">
+      document.getElementById("dice").textContent = diceFaces[number - 1];
 
-  <h1>Over mij</h1>
-
-  <p>Hoi, mijn naam is Timo. Ik ben 15 jaar.</p>
-
-  <p>Mijn hobby's zijn gamen en slapen.</p>
-
-</div>
-
-
-<!-- FOTO'S -->
-<div class="fotos">
-
-  <img src="plaatje1.jpg" alt="Foto 1">
-  <img src="plaatje2.jpg" alt="Foto 2">
-  <img src="plaatje3.jpg" alt="Foto 3">
-  <img src="plaatje4.jpg" alt="Foto 4">
-
-</div>
-
-
-<script>
-
-/* MENU OPENEN / SLUITEN */
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("open");
-}
-
-
-/* MENU NAVIGATIE */
-function navigate(page) {
-
-  // Menu sluiten
-  document.getElementById("menu").classList.remove("open");
-
-  // Over mij
-  if (page === "over-mij") {
-
-    document.getElementById("over-mij").scrollIntoView({
-      behavior: "smooth"
-    });
-
-  }
-
-  // Hobby's
-  if (page === "hobbys") {
-
-    alert("Mijn hobby's zijn gamen en slapen!");
-
-  }
-
-  // Contact
-  if (page === "contact") {
-
-    alert("Je kunt hier later je contactgegevens toevoegen.");
-
-  }
-
-}
-
-</script>
+      if (number === 6) {
+        document.getElementById("result").textContent =
+          "🎉 Je gooide een 6!";
+      } else {
+        document.getElementById("result").textContent =
+          "Je gooide " + number + ".";
+      }
+    }
+  </script>
 
 </body>
 </html>
+```
