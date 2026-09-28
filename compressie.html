@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Compressie - Bitmap en Vector</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eef4ff;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 35px;
+        }
+
+        nav {
+            background-color: #172554;
+            text-align: center;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #2563eb;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        .kaart {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px #bbb;
+        }
+
+        h2 {
+            color: #2563eb;
+        }
+
+        .vergelijking {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .kolom {
+            flex: 1;
+            min-width: 250px;
+            background-color: #eff6ff;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            border-radius: 12px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        footer {
+            background-color: #172554;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Compressie</h1>
+    <p>Bitmap en vector</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="invoer.html">Invoer/Verwerking/Uitvoer</a>
+    <a href="binair.html">Binair</a>
+    <a href="kleurmodellen.html">Kleurmodellen</a>
+    <a href="compressie.html">Compressie</a>
+    <a href="ai.html">AI</a>
+</nav>
+
+<main>
+
+    <section class="kaart">
+
+        <h2>Wat is compressie?</h2>
+
+        <p>
+            Compressie betekent dat een bestand kleiner wordt gemaakt.
+            Hierdoor neemt het minder opslagruimte in en kan het
+            sneller worden verstuurd via internet.
+        </p>
+
+    </section>
+
+    <section class="kaart">
+
+        <h2>Bitmap</h2>
+
+        <p>
+            Een bitmapafbeelding bestaat uit heel veel kleine pixels.
+            Elke pixel bevat informatie over de kleur.
+        </p>
+
+        <p>
+            Foto's zijn meestal bitmapafbeeldingen.
+            Wanneer je sterk inzoomt, kun je de afzonderlijke pixels zien.
+        </p>
+
+    </section>
+
+    <section class="kaart">
+
+        <h2>Vector</h2>
+
+        <p>
+            Een vectorafbeelding wordt opgebouwd uit lijnen,
+            vormen en wiskundige berekeningen.
+        </p>
+
+        <p>
+            Een voordeel is dat je een vectorafbeelding heel groot
+            kunt maken zonder dat deze wazig wordt.
+        </p>
+
+    </section>
+
+    <section class="kaart">
+
+        <h2>Bitmap tegenover vector</h2>
+
+        <div class="vergelijking">
+
+            <div class="kolom">
+                <h3>Bitmap</h3>
+                <ul>
+                    <li>Bestaat uit pixels</li>
+                    <li>Goed voor foto's</li>
+                    <li>Kan wazig worden bij vergroten</li>
+                </ul>
+            </div>
+
+            <div class="kolom">
+                <h3>Vector</h3>
+                <ul>
+                    <li>Bestaat uit vormen en lijnen</li>
+                    <li>Goed voor logo's</li>
+                    <li>Kan zonder kwaliteitsverlies worden vergroot</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="kaart">
+
+        <h2>Video</h2>
+
+        <p>
+            Ik heb deze video toegevoegd omdat hij het verschil tussen
+            bitmap en vector duidelijk uitlegt en met voorbeelden laat zien.
+        </p>
+
+        <iframe
+            src="https://www.youtube.com/embed/4KfW3G8b9rY"
+            title="Video over bitmap en vector"
+            allowfullscreen>
+        </iframe>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Mijn Informatica Website</p>
+</footer>
+
+</body>
+</html>
