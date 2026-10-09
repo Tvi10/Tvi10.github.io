@@ -3,13 +3,11 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pokémon Roulette | Timo's Website</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pokémon Roulette</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -25,10 +23,6 @@ header {
     background: linear-gradient(135deg, #2563eb, #7c3aed);
 }
 
-header h1 {
-    margin: 0 0 10px;
-}
-
 nav {
     display: flex;
     justify-content: center;
@@ -37,45 +31,34 @@ nav {
 }
 
 nav a {
+    padding: 14px 18px;
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 14px 18px;
 }
 
-nav a:hover {
-    background: #2563eb;
-}
+nav a:hover { background: #2563eb; }
 
 main {
     width: 92%;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 30px auto;
 }
 
 .card {
     background: white;
+    border-radius: 16px;
     padding: 24px;
     margin-bottom: 22px;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px #0000000d;
+    box-shadow: 0 5px 20px #0001;
 }
 
-h2 {
-    color: #2563eb;
-    margin-top: 0;
-}
-
-.controls {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-}
+h2 { color: #2563eb; margin-top: 0; }
 
 label {
     display: block;
     font-weight: bold;
-    margin-bottom: 7px;
+    margin: 12px 0 6px;
 }
 
 select, input[type="number"] {
@@ -83,59 +66,53 @@ select, input[type="number"] {
     padding: 12px;
     border: 1px solid #cbd5e1;
     border-radius: 9px;
+    font-size: 16px;
     background: white;
-    font-size: 15px;
+}
+
+.settings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
 }
 
 .check {
     display: flex;
     align-items: center;
-    gap: 9px;
-    margin-top: 10px;
+    gap: 8px;
+    margin-top: 15px;
 }
 
-.check label {
-    margin: 0;
-}
+.check label { margin: 0; }
 
 button {
     border: 0;
-    padding: 13px 20px;
     border-radius: 10px;
+    padding: 14px 20px;
     background: #2563eb;
     color: white;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    font-size: 15px;
 }
 
-button:hover {
-    filter: brightness(1.1);
-}
-
-button:disabled {
-    opacity: .6;
-    cursor: wait;
-}
+button:disabled { opacity: .6; cursor: wait; }
 
 .buttons {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 12px;
-    margin-top: 20px;
+    margin-top: 22px;
 }
 
-.secondary {
-    background: #475569;
-}
+.secondary { background: #475569; }
 
-.pokemon-display {
+.pokemon {
     text-align: center;
-    padding: 10px;
 }
 
-.pokemon-display img {
+.pokemon img {
     width: 220px;
     height: 220px;
     object-fit: contain;
@@ -145,57 +122,44 @@ button:disabled {
 #pokemonName {
     text-transform: capitalize;
     font-size: 28px;
-    margin: 8px 0;
 }
 
 #status {
-    min-height: 24px;
     text-align: center;
-    color: #475569;
+    min-height: 24px;
     font-weight: bold;
 }
 
-.results {
+.collection {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
 }
 
-.pokemon-item {
-    text-align: center;
+.item {
+    background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
+    text-align: center;
     padding: 12px;
-    background: #f8fafc;
 }
 
-.pokemon-item img {
-    width: 110px;
-    height: 110px;
+.item img {
+    width: 100px;
+    height: 100px;
     object-fit: contain;
 }
 
-.pokemon-item h3 {
+.item h3 {
     text-transform: capitalize;
     font-size: 16px;
 }
 
 footer {
-    text-align: center;
-    background: #172554;
-    color: white;
     padding: 20px;
-}
-
-@media(max-width: 600px) {
-    nav a {
-        width: 100%;
-        text-align: center;
-    }
-
-    .card {
-        padding: 17px;
-    }
+    text-align: center;
+    color: white;
+    background: #172554;
 }
 </style>
 </head>
@@ -204,7 +168,7 @@ footer {
 
 <header>
     <h1>⚡ Pokémon Roulette</h1>
-    <p>Stel je roulette in en ontdek jouw Pokémon!</p>
+    <p>Welke Pokémon krijg jij?</p>
 </header>
 
 <nav>
@@ -219,97 +183,85 @@ footer {
 
 <main>
 
-    <section class="card">
-        <h2>⚙️ Instellingen</h2>
+<section class="card">
+    <h2>Instellingen</h2>
 
-        <div class="controls">
-            <div>
-                <label for="generation">Pokémon-generatie</label>
-                <select id="generation">
-                    <option value="1">Generatie 1 (Kanto)</option>
-                    <option value="2">Generatie 2 (Johto)</option>
-                    <option value="3">Generatie 3 (Hoenn)</option>
-                    <option value="4">Generatie 4 (Sinnoh)</option>
-                    <option value="5">Generatie 5 (Unova)</option>
-                    <option value="6">Generatie 6 (Kalos)</option>
-                    <option value="7">Generatie 7 (Alola)</option>
-                    <option value="8">Generatie 8 (Galar)</option>
-                    <option value="9">Generatie 9 (Paldea)</option>
-                    <option value="0">Alle generaties</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="amount">Aantal Pokémon</label>
-                <input type="number" id="amount"
-                       min="1" max="20" value="1">
-            </div>
-
-            <div>
-                <label for="animationSpeed">Animatiesnelheid</label>
-                <select id="animationSpeed">
-                    <option value="50">Heel snel</option>
-                    <option value="100" selected>Normaal</option>
-                    <option value="200">Langzaam</option>
-                </select>
-            </div>
+    <div class="settings">
+        <div>
+            <label for="generation">Generatie</label>
+            <select id="generation">
+                <option value="1">Generatie 1</option>
+                <option value="2">Generatie 2</option>
+                <option value="3">Generatie 3</option>
+                <option value="4">Generatie 4</option>
+                <option value="5">Generatie 5</option>
+                <option value="6">Generatie 6</option>
+                <option value="7">Generatie 7</option>
+                <option value="8">Generatie 8</option>
+                <option value="9">Generatie 9</option>
+                <option value="0">Alle generaties</option>
+            </select>
         </div>
 
-        <div class="check">
-            <input type="checkbox" id="shiny">
-            <label for="shiny">Shiny Pokémon tonen</label>
+        <div>
+            <label for="amount">Aantal Pokémon (1-10)</label>
+            <input id="amount" type="number" min="1" max="10" value="1">
         </div>
 
-        <div class="check">
-            <input type="checkbox" id="legendary">
-            <label for="legendary">Legendarische Pokémon toestaan</label>
+        <div>
+            <label for="speed">Snelheid</label>
+            <select id="speed">
+                <option value="50">Snel</option>
+                <option value="100" selected>Normaal</option>
+                <option value="200">Langzaam</option>
+            </select>
         </div>
+    </div>
 
-        <div class="buttons">
-            <button id="spinButton" onclick="spinRoulette()">
-                🎲 Draai roulette
-            </button>
-            <button class="secondary" onclick="clearResults()">
-                Wissen
-            </button>
-        </div>
+    <div class="check">
+        <input type="checkbox" id="shiny">
+        <label for="shiny">Shiny Pokémon tonen</label>
+    </div>
 
-        <p id="status" aria-live="polite">
-            Kies je instellingen en draai de roulette!
-        </p>
-    </section>
+    <div class="buttons">
+        <button id="spinButton">🎲 Draai de roulette</button>
+        <button id="clearButton" class="secondary">Wis verzameling</button>
+    </div>
 
-    <section class="card">
-        <h2>🏆 Jouw Pokémon</h2>
+    <p id="status" aria-live="polite">Klaar om te draaien!</p>
+</section>
 
-        <div class="pokemon-display">
-            <img id="pokemonImage"
-                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-                 alt="Gekozen Pokémon">
+<section class="card">
+    <h2>Jouw Pokémon</h2>
 
-            <h3 id="pokemonName">Pikachu</h3>
-            <p id="pokemonNumber">Pokédex #25</p>
-            <p id="pokemonTypes">Druk op de knop om te beginnen.</p>
-        </div>
-    </section>
+    <div class="pokemon">
+        <img id="pokemonImage"
+             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+             alt="Pokémon">
 
-    <section class="card">
-        <h2>📚 Jouw verzameling</h2>
-        <div id="results" class="results">
-            <p>Je verzameling is nog leeg.</p>
-        </div>
-    </section>
+        <h3 id="pokemonName">Pikachu</h3>
+        <p id="pokemonNumber">Pokédex #25</p>
+        <p id="pokemonTypes">Kies je instellingen en draai!</p>
+    </div>
+</section>
+
+<section class="card">
+    <h2>Mijn verzameling</h2>
+    <div id="collection" class="collection">
+        <p>Nog geen Pokémon verzameld.</p>
+    </div>
+</section>
 
 </main>
 
 <footer>
-    <p>Timo's Informatica Website · Pokémon Roulette</p>
+    Timo's Informatica Website · Pokémon Roulette
 </footer>
 
 <script>
 const $ = id => document.getElementById(id);
 
-const generationRanges = {
+const ranges = {
     1: [1, 151],
     2: [152, 251],
     3: [252, 386],
@@ -321,51 +273,24 @@ const generationRanges = {
     9: [906, 1025]
 };
 
-// Bekende legendarische Pokémon-nummers.
-// Pas deze lijst gerust aan.
-const legendaryIds = new Set([
-    144,145,146,150,151,
-    243,244,245,249,250,251,
-    377,378,379,380,381,382,383,384,385,386,
-    480,481,482,483,484,487,488,489,490,491,492,493,
-    638,639,640,641,642,643,644,645,646,647,648,649,
-    716,717,718,772,773,785,786,787,788,
-     legendariesPlaceholder: 0
-].filter(Number.isInteger));
-
-let spinning = false;
+let busy = false;
 let collection = [];
-let spinTimer = null;
+let currentPokemon = 25;
+let animation = null;
 
 function randomId() {
     const gen = Number($("generation").value);
+    const [min, max] = gen === 0 ? [1, 1025] : ranges[gen];
 
-    let min = 1;
-    let max = 1025;
-
-    if (gen !== 0) {
-        [min, max] = generationRanges[gen];
-    }
-
-    let id;
-
-    for (let tries = 0; tries < 100; tries++) {
-        id = Math.floor(Math.random() * (max - min + 1)) + min;
-
-        if ($("legendary").checked || !legendaryIds.has(id)) {
-            return id;
-        }
-    }
-
-    return id;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function pokemonImageUrl(id, shiny = false) {
-    const variant = shiny ? "shiny/" : "";
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${variant}${id}.png`;
+function spriteUrl(id, shiny = false) {
+    const folder = shiny ? "shiny/" : "";
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${folder}${id}.png`;
 }
 
-async function getPokemon(id) {
+async function fetchPokemon(id) {
     const response = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${id}`
     );
@@ -377,152 +302,139 @@ async function getPokemon(id) {
     return response.json();
 }
 
-function showPokemon(pokemon) {
-    const id = pokemon.id;
+function displayPokemon(pokemon) {
+    currentPokemon = pokemon.id;
+
     const shiny = $("shiny").checked;
-
-    $("pokemonImage").src = shiny
-        ? pokemonImageUrl(id, true)
+    const sprite = shiny
+        ? pokemon.sprites.front_shiny
         : pokemon.sprites.other?.["official-artwork"]?.front_default
-          || pokemonImageUrl(id);
+          || pokemon.sprites.front_default;
 
-    $("pokemonName").textContent =
-        pokemon.name.replace(/-/g, " ");
-
-    $("pokemonNumber").textContent = "Pokédex #" + id;
-
+    $("pokemonImage").src = sprite || spriteUrl(pokemon.id, shiny);
+    $("pokemonName").textContent = pokemon.name.replace(/-/g, " ");
+    $("pokemonNumber").textContent = "Pokédex #" + pokemon.id;
     $("pokemonTypes").textContent =
         "Type: " + pokemon.types.map(t => t.type.name).join(", ");
 }
 
+function renderCollection() {
+    const area = $("collection");
+    area.replaceChildren();
+
+    if (collection.length === 0) {
+        area.textContent = "Nog geen Pokémon verzameld.";
+        return;
+    }
+
+    collection.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "item";
+
+        const img = document.createElement("img");
+        img.src = p.image;
+        img.alt = p.name;
+
+        const title = document.createElement("h3");
+        title.textContent = p.name.replace(/-/g, " ");
+
+        const number = document.createElement("p");
+        number.textContent = "Pokédex #" + p.id;
+
+        card.append(img, title, number);
+        area.appendChild(card);
+    });
+}
+
 async function spinRoulette() {
-    if (spinning) return;
+    if (busy) return;
 
-    spinning = true;
+    busy = true;
     $("spinButton").disabled = true;
-    $("status").textContent = "🎰 De roulette draait...";
+    $("status").textContent = "De roulette draait...";
 
-    const amount = Math.max(
-        1, Math.min(20, Number($("amount").value) || 1)
-    );
+    const amount = Math.max(1, Math.min(10,
+        Number($("amount").value) || 1
+    ));
 
-    const speed = Number($("animationSpeed").value);
-    const finalIds = [];
+    const speed = Number($("speed").value);
 
     try {
-        // Bepaal eerst de uiteindelijke Pokémon.
-        for (let i = 0; i < amount; i++) {
-            finalIds.push(randomId());
-        }
-
         let ticks = 0;
-        const totalTicks = 15;
 
         await new Promise(resolve => {
-            spinTimer = setInterval(() => {
+            animation = setInterval(() => {
                 const id = randomId();
 
                 $("pokemonImage").src =
-                    pokemonImageUrl(id, $("shiny").checked);
-
+                    spriteUrl(id, $("shiny").checked);
                 $("pokemonName").textContent = "???";
-                $("pokemonNumber").textContent = "Pokémon #" + id;
+                $("pokemonNumber").textContent = "Pokédex #" + id;
                 $("pokemonTypes").textContent = "Spannend...";
 
                 ticks++;
 
-                if (ticks >= totalTicks) {
-                    clearInterval(spinTimer);
+                if (ticks >= 15) {
+                    clearInterval(animation);
+                    animation = null;
                     resolve();
                 }
             }, speed);
         });
 
-        for (const id of finalIds) {
-            const pokemon = await getPokemon(id);
+        const picked = [];
 
-            showPokemon(pokemon);
-
-            collection.unshift({
-                id: pokemon.id,
-                name: pokemon.name,
-                image: pokemonImageUrl(
-                    pokemon.id,
-                    $("shiny").checked
-                )
-            });
+        for (let i = 0; i < amount; i++) {
+            const pokemon = await fetchPokemon(randomId());
+            picked.push(pokemon);
         }
 
-        renderCollection();
+        // Laat de laatste Pokémon groot zien.
+        displayPokemon(picked[picked.length - 1]);
 
+        // Voeg alle gekozen Pokémon toe aan de verzameling.
+        picked.forEach(p => {
+            collection.unshift({
+                id: p.id,
+                name: p.name,
+                image: spriteUrl(p.id, $("shiny").checked)
+            });
+        });
+
+        renderCollection();
         $("status").textContent =
             amount === 1
-            ? "✨ Je Pokémon is gekozen!"
-            : `✨ ${amount} Pokémon zijn gekozen!`;
+                ? "✨ Je Pokémon is gekozen!"
+                : `✨ Je hebt ${amount} Pokémon gekozen!`;
 
     } catch (error) {
         $("status").textContent =
-            "Er ging iets mis. Controleer je internetverbinding en probeer opnieuw.";
+            "Laden mislukt. Controleer je internetverbinding en probeer opnieuw.";
+        console.error(error);
     } finally {
-        spinning = false;
+        if (animation !== null) {
+            clearInterval(animation);
+            animation = null;
+        }
+
+        busy = false;
         $("spinButton").disabled = false;
     }
 }
 
-function renderCollection() {
-    const container = $("results");
-    container.replaceChildren();
+$("spinButton").addEventListener("click", spinRoulette);
 
-    if (collection.length === 0) {
-        container.textContent = "Je verzameling is nog leeg.";
-        return;
-    }
-
-    collection.forEach(pokemon => {
-        const item = document.createElement("div");
-        item.className = "pokemon-item";
-
-        const img = document.createElement("img");
-        img.src = pokemon.image;
-        img.alt = pokemon.name;
-
-        const title = document.createElement("h3");
-        title.textContent = pokemon.name.replace(/-/g, " ");
-
-        const number = document.createElement("p");
-        number.textContent = "#" + pokemon.id;
-
-        item.append(img, title, number);
-        container.appendChild(item);
-    });
-}
-
-function clearResults() {
-    if (spinning) return;
+$("clearButton").addEventListener("click", () => {
+    if (busy) return;
 
     collection = [];
     renderCollection();
+    $("status").textContent = "Je verzameling is gewist.";
+});
 
-    $("pokemonImage").src = pokemonImageUrl(25);
-    $("pokemonName").textContent = "Pikachu";
-    $("pokemonNumber").textContent = "Pokédex #25";
-    $("pokemonTypes").textContent = "Je verzameling is gewist.";
-    $("status").textContent = "Klaar voor een nieuwe ronde!";
-}
-
-// Als shiny wordt aangezet, pas de afbeelding aan.
 $("shiny").addEventListener("change", () => {
-    const match = $("pokemonNumber").textContent.match(/#(\d+)/);
-    if (!match) return;
-
-    const id = Number(match[1]);
-
-    if ($("shiny").checked) {
-        $("pokemonImage").src = pokemonImageUrl(id, true);
-    } else {
-        $("pokemonImage").src =
-            `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
-    }
+    $("pokemonImage").src =
+        spriteUrl(currentPokemon, $("shiny").checked);
 });
 </script>
 
