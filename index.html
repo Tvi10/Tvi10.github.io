@@ -1,108 +1,340 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+    <!-- Geeft aan dat de website Nederlandse tekst bevat -->
     <meta charset="UTF-8">
+
+    <!-- Zorgt ervoor dat de website goed werkt op mobiele apparaten -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mijn Informatica Website</title>
+    <!-- De titel die bovenaan het browsertabblad verschijnt -->
+    <title>Home | Timo's Informatica Website</title>
+
+    <!-- Korte beschrijving van de website -->
+    <meta name="description" content="Een persoonlijke website over informatica.">
 
     <style>
-        /* Algemene instellingen */
+        /* ==========================================
+           ALGEMENE INSTELLINGEN
+           ========================================== */
+
+        /* Alle elementen gebruiken border-box.
+           Hierdoor tellen padding en randen mee bij de breedte en hoogte. */
         * {
             box-sizing: border-box;
         }
 
+        /* De body bevat de volledige zichtbare pagina.
+           margin: 0 verwijdert de standaard buitenmarge.
+           font-family bepaalt het lettertype.
+           line-height bepaalt de ruimte tussen tekstregels.
+           color bepaalt de standaard tekstkleur.
+           background bepaalt de achtergrondkleur. */
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
             color: #1e293b;
             background: #eef2ff;
         }
 
-        /* Header */
+        /* Maakt de focus zichtbaar wanneer iemand met Tab navigeert.
+           Dit helpt bezoekers die geen muis gebruiken. */
+        a:focus-visible {
+            outline: 3px solid #f59e0b;
+            outline-offset: 3px;
+        }
+
+
+        /* ==========================================
+           HEADER: DE BOVENKANT VAN DE WEBSITE
+           ========================================== */
+
+        /* De header bevat de hoofdtitel en de introductietekst.
+           padding geeft ruimte binnen de header.
+           text-align: center centreert de tekst.
+           color maakt de tekst wit.
+           linear-gradient maakt een kleurverloop van blauw naar paars. */
         header {
-            padding: 60px 20px;
+            padding: 52px 20px;
             text-align: center;
-            color: white;
+            color: #ffffff;
             background: linear-gradient(135deg, #2563eb, #7c3aed);
         }
 
+        /* Selecteert de h1 binnen de header.
+           margin bepaalt de buitenruimte rondom de titel.
+           font-size bepaalt de tekstgrootte.
+           clamp zorgt ervoor dat de titel zich aanpast aan het schermformaat.
+           line-height bepaalt de regelhoogte. */
         header h1 {
             margin: 0 0 10px;
-            font-size: 42px;
+            font-size: clamp(2rem, 5vw, 2.7rem);
+            line-height: 1.2;
         }
 
+        /* Stelt de introductietekst onder de hoofdtitel in.
+           margin: 0 verwijdert de standaard buitenmarge.
+           font-size maakt de tekst iets groter. */
         header p {
             margin: 0;
-            font-size: 18px;
+            font-size: 1.1rem;
         }
 
-        /* Navigatie */
+
+        /* ==========================================
+           NAVIGATIE: HET MENU
+           ========================================== */
+
+        /* Het nav-element bevat de menu-links.
+           display: flex zet de links naast elkaar.
+           justify-content centreert de links.
+           flex-wrap laat links naar een nieuwe regel gaan als dat nodig is.
+           gap bepaalt de ruimte tussen de links.
+           padding bepaalt de binnenruimte van het menu.
+           background bepaalt de achtergrondkleur. */
         nav {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 4px;
+            padding: 8px 12px;
             background: #172554;
         }
 
+        /* Selecteert alle links binnen het menu.
+           display: inline-block maakt het mogelijk om padding toe te voegen.
+           padding maakt de klikbare gebieden groter.
+           border-radius maakt de hoeken rond.
+           color maakt de tekst wit.
+           text-decoration: none verwijdert de onderstreping.
+           font-weight maakt de tekst vet.
+           transition zorgt voor een vloeiende kleurverandering. */
         nav a {
-            padding: 15px 20px;
-            color: white;
+            display: inline-block;
+            padding: 12px 14px;
+            border-radius: 8px;
+            color: #ffffff;
             text-decoration: none;
             font-weight: bold;
-            transition: 0.2s;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
-        nav a:hover {
+        /* Verandert de achtergrond als je met de muis over een link gaat.
+           :hover betekent dat de muis boven de link staat.
+           :focus-visible zorgt voor een vergelijkbaar effect bij toetsenbordgebruik. */
+        nav a:hover,
+        nav a:focus-visible {
             background: #2563eb;
+            color: #ffffff;
         }
 
-        /* Inhoud */
+        /* Laat zien welke pagina de bezoeker momenteel bekijkt.
+           aria-current="page" staat bij de Home-link in de HTML.
+           De actieve link krijgt een witte achtergrond en donkere tekst. */
+        nav a[aria-current="page"] {
+            background: #ffffff;
+            color: #172554;
+        }
+
+
+        /* ==========================================
+           HOOFDINHOUD VAN DE WEBSITE
+           ========================================== */
+
+        /* main bevat de belangrijkste inhoud van de pagina.
+           width bepaalt de breedte als percentage van het scherm.
+           max-width voorkomt dat de inhoud te breed wordt.
+           margin centreert de inhoud en geeft ruimte boven en onder. */
         main {
-            width: 90%;
-            max-width: 900px;
-            margin: 40px auto;
+            width: min(92%, 900px);
+            margin: 32px auto 44px;
         }
 
+        /* De klasse .kaart wordt gebruikt voor de witte inhoudsblokken.
+           margin-bottom geeft ruimte tussen de kaarten.
+           padding geeft ruimte binnen de kaarten.
+           background maakt de kaarten wit.
+           border voegt een subtiele rand toe.
+           border-radius maakt de hoeken rond.
+           box-shadow geeft een lichte schaduw. */
         .kaart {
-            margin-bottom: 25px;
-            padding: 30px;
-            background: white;
+            margin-bottom: 24px;
+            padding: 28px;
+            background: #ffffff;
+            border: 1px solid #dbeafe;
             border-radius: 16px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
         }
 
+        /* Selecteert alle h2-tussenkoppen.
+           margin-top: 0 verwijdert de bovenmarge.
+           color maakt de tussenkoppen blauw.
+           line-height bepaalt de regelhoogte. */
         h2 {
             margin-top: 0;
             color: #2563eb;
+            line-height: 1.25;
         }
 
+        /* Geeft extra ruimte tussen de onderdelen van een lijst. */
         li {
             margin-bottom: 8px;
         }
 
-        /* Footer */
+
+        /* ==========================================
+           SNELKOPPELINGEN NAAR ONDERWERPEN
+           ========================================== */
+
+        /* Deze klasse wordt gebruikt voor de rij met onderwerp-links.
+           display: flex zet de links naast elkaar.
+           flex-wrap zorgt ervoor dat ze naar een nieuwe regel kunnen gaan.
+           gap bepaalt de ruimte tussen de links.
+           margin-top geeft ruimte boven de rij. */
+        .onderwerp-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        /* Maakt de snelkoppelingen vormgegeven als knoppen.
+           Ze blijven gewone links naar andere HTML-pagina's.
+           padding maakt ze groter en makkelijker aan te klikken.
+           border-radius maakt de hoeken rond.
+           background bepaalt de achtergrondkleur.
+           color bepaalt de tekstkleur. */
+        .onderwerp-links a {
+            display: inline-block;
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Verandert de kleuren van de snelkoppelingen bij hover of focus. */
+        .onderwerp-links a:hover,
+        .onderwerp-links a:focus-visible {
+            background: #2563eb;
+            color: #ffffff;
+        }
+
+
+        /* ==========================================
+           RGB-KLEURVOORBEELD
+           ========================================== */
+
+        /* Zet het kleurvlak en de uitleg naast elkaar.
+           align-items centreert de onderdelen verticaal.
+           flex-wrap laat onderdelen onder elkaar komen als er weinig ruimte is.
+           gap bepaalt de ruimte tussen de onderdelen. */
+        .kleurvoorbeeld {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        /* Dit is het rode kleurvlak.
+           width bepaalt de breedte.
+           height bepaalt de hoogte.
+           flex zorgt dat het vlak niet kleiner wordt.
+           border geeft een rand.
+           border-radius maakt de hoeken rond.
+           background-color stelt de kleur in met decimale RGB-waarden. */
+        .rood-vlak {
+            width: 88px;
+            height: 88px;
+            flex: 0 0 88px;
+            border: 1px solid #991b1b;
+            border-radius: 12px;
+            background-color: rgb(255, 0, 0);
+        }
+
+        /* Verwijdert onnodige buitenruimte bij de tekst over RGB. */
+        .kleurgegevens p {
+            margin: 4px 0;
+        }
+
+
+        /* ==========================================
+           FOOTER: DE ONDERKANT VAN DE WEBSITE
+           ========================================== */
+
+        /* De footer staat onderaan de pagina.
+           padding geeft binnenruimte.
+           text-align centreert de tekst.
+           color maakt de tekst wit.
+           background maakt de achtergrond donkerblauw. */
         footer {
             padding: 20px;
             text-align: center;
-            color: white;
+            color: #ffffff;
             background: #172554;
         }
 
-        /* Mobiele apparaten */
+        /* Verwijdert de standaard buitenmarge van de footer-tekst. */
+        footer p {
+            margin: 0;
+        }
+
+
+        /* ==========================================
+           MOBIELE APPARATEN
+           ========================================== */
+
+        /* Deze CSS wordt toegepast als het scherm maximaal 600 pixels breed is.
+           Zo blijft de website bruikbaar op een mobiele telefoon. */
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 32px;
+
+            /* Maakt de header op kleine schermen minder hoog. */
+            header {
+                padding: 38px 16px;
             }
 
+            /* Past de tekstgrootte van de introductie aan. */
+            header p {
+                font-size: 1rem;
+            }
+
+            /* Geeft het menu op kleine schermen iets minder ruimte. */
+            nav {
+                justify-content: stretch;
+                padding: 8px;
+            }
+
+            /* Laat de menu-links zich aanpassen aan de beschikbare breedte.
+               text-align centreert de tekst in iedere link.
+               De padding houdt de links makkelijk aanklikbaar. */
             nav a {
-                width: 100%;
+                flex: 1 1 145px;
                 text-align: center;
+                padding: 12px 10px;
             }
 
+            /* Laat de hoofdinhoud bijna de volledige schermbreedte gebruiken.
+               calc trekt 24 pixels af voor de ruimte aan de zijkanten. */
+            main {
+                width: calc(100% - 24px);
+                margin-top: 22px;
+            }
+
+            /* Maakt de kaarten op kleine schermen compacter. */
             .kaart {
                 padding: 20px;
+                border-radius: 12px;
+            }
+        }
+
+        /* Schakelt animaties uit als de bezoeker heeft ingesteld
+           dat die minder beweging op het scherm wil zien. */
+        @media (prefers-reduced-motion: reduce) {
+            nav a {
+                transition: none;
             }
         }
     </style>
@@ -110,66 +342,146 @@
 
 <body>
 
+    <!-- ==========================================
+         HEADER: TITEL EN INTRODUCTIE
+         ========================================== -->
+
+    <!-- De header is het bovenste gedeelte van de website. -->
     <header>
+        <!-- h1 is de belangrijkste titel van de pagina. -->
         <h1>Timo's Informatica Website</h1>
+
+        <!-- Deze paragraaf verwelkomt de bezoeker. -->
         <p>Welkom op mijn website over informatica</p>
     </header>
-      
-<nav>
-    <a href="index.html">Home</a>
-    <a href="invoer.html">Invoer - Verwerking - Uitvoer</a>
-    <a href="binair.html">Binair</a>
-    <a href="kleurmodellen.html">Kleurmodellen</a>
-    <a href="compressie.html">Compressie</a>
-    <a href="ai.html">AI</a>
-    <a href="pokemon-roulette.html">Pokémon Roulette 🎲</a>
-</nav>
 
+
+    <!-- ==========================================
+         NAVIGATIE: MENU MET PAGINALINKS
+         ========================================== -->
+
+    <!-- nav groepeert de links waarmee bezoekers door de website navigeren.
+         aria-label geeft het menu een duidelijke naam voor hulptechnologie.
+         Iedere href verwijst naar een HTML-bestand.
+         Controleer of deze bestanden in dezelfde map staan.
+         aria-current="page" geeft aan dat dit de actieve pagina is. -->
+    <nav aria-label="Hoofdnavigatie">
+
+        <!-- Link naar de homepage -->
+        <a href="index.html" aria-current="page">Home</a>
+
+        <!-- Link naar de pagina over invoer, verwerking en uitvoer -->
+        <a href="invoer.html">Invoer - Verwerking - Uitvoer</a>
+
+        <!-- Link naar de pagina over het binaire stelsel -->
+        <a href="binair.html">Binair</a>
+
+        <!-- Link naar de pagina over kleurmodellen -->
+        <a href="kleurmodellen.html">Kleurmodellen</a>
+
+        <!-- Link naar de pagina over compressie -->
+        <a href="compressie.html">Compressie</a>
+
+        <!-- Link naar de pagina over kunstmatige intelligentie -->
+        <a href="ai.html">AI</a>
+
+    </nav>
+
+
+    <!-- ==========================================
+         MAIN: DE BELANGRIJKSTE PAGINA-INHOUD
+         ========================================== -->
+
+    <!-- main bevat de hoofdinhoud van de homepage. -->
     <main>
 
-        <section class="kaart">
-            <h2>Over mij</h2>
+        <!-- KAART 1: INFORMATIE OVER JEZELF
+             section groepeert inhoud die bij elkaar hoort.
+             class="kaart" zorgt ervoor dat de CSS de witte kaartvorm toepast.
+             id maakt dit onderdeel herkenbaar met een unieke naam.
+             aria-labelledby koppelt de sectie aan de bijbehorende kop. -->
+        <section class="kaart" id="over-mij" aria-labelledby="over-mij-titel">
 
+            <!-- De titel van dit inhoudsblok -->
+            <h2 id="over-mij-titel">Over mij</h2>
+
+            <!-- Een paragraaf met persoonlijke informatie -->
             <p>
-                Welkom op mijn website van informatica.
-                Mijn naam is Timo van ipenburg, ik ben 15 jaar en woon in voorschoten.
-                mijn hobby's zijn gamen, fietsen, lopen met mijn hond (alleen als ik muziek heb) en slapen maar dat doe ik niet vaak genoeg.
+                Welkom op mijn website voor informatica.
+                Mijn naam is Timo. Ik ben 15 jaar en woon in Voorschoten.
+                Mijn hobby's zijn gamen, fietsen, wandelen met mijn hond en slapen.
+                Ik wandel graag met mijn hond terwijl ik naar muziek luister.
             </p>
 
+            <!-- Een tweede paragraaf over je interesse in informatica -->
             <p>
                 Ik vind het interessant om te leren hoe computers werken
-                en hoe technologie steeds verder wordt ontwikkeld.
-                Daarom leg ik op deze website verschillende onderwerpen
-                op een eenvoudige manier uit.
+                en hoe technologie zich verder ontwikkelt. Daarom leg ik op deze
+                website verschillende informaticaonderwerpen op een eenvoudige manier uit.
             </p>
+
         </section>
 
-        <section class="kaart">
-            <h2>Waar gaat deze website over?</h2>
 
+        <!-- KAART 2: OVERZICHT VAN DE ONDERWERPEN -->
+        <section class="kaart" id="onderwerpen" aria-labelledby="onderwerpen-titel">
+
+            <!-- Tussenkop van deze sectie -->
+            <h2 id="onderwerpen-titel">Waar gaat deze website over?</h2>
+
+            <!-- Introductie bij de lijst -->
             <p>
-                Op de verschillende pagina's behandel ik onder andere:
+                Op de verschillende pagina's behandel ik de volgende onderwerpen:
             </p>
 
+            <!-- ul maakt een lijst met opsommingstekens.
+                 Iedere li is één onderdeel van de lijst. -->
             <ul>
                 <li>Invoer, verwerking en uitvoer</li>
                 <li>Het binaire stelsel</li>
-                <li>Kleurmodellen</li>
-                <li>Compressie, bitmap en vector</li>
+                <li>Kleurmodellen en RGB</li>
+                <li>Compressie van bestanden, foto's en video's</li>
                 <li>Kunstmatige intelligentie (AI)</li>
             </ul>
 
+            <!-- Vertelt de bezoeker wat er op de onderwerp-pagina's te vinden is -->
             <p>
-                Bij ieder onderwerp staat ook een korte video
-                om het onderwerp beter te begrijpen.
+                Bij de onderwerpen voeg ik uitleg en waar mogelijk een passende video,
+                afbeelding of interactieve opdracht toe.
             </p>
+
+            <!-- Extra links naar belangrijke onderdelen.
+                 div groepeert de links zodat ze samen vormgegeven kunnen worden.
+                 class="onderwerp-links" koppelt ze aan de bijbehorende CSS. -->
+            <div class="onderwerp-links" aria-label="Snel naar een onderwerp">
+
+                <!-- Snelkoppeling naar invoer, verwerking en uitvoer -->
+                <a href="invoer.html">Bekijk I-V-U</a>
+
+                <!-- Snelkoppeling naar binair -->
+                <a href="binair.html">Bekijk binair</a>
+
+                <!-- Snelkoppeling naar RGB en kleurmodellen -->
+                <a href="kleurmodellen.html">Bekijk RGB</a>
+
+                <!-- Snelkoppeling naar compressie -->
+                <a href="compressie.html">Bekijk compressie</a>
+
+                <!-- Snelkoppeling naar AI -->
+                <a href="ai.html">Bekijk AI</a>
+
+            </div>
         </section>
 
-    </main>
 
-    <footer>
-        <p>Mijn Informatica Website · Gemaakt met HTML</p>
-    </footer>
+        <!-- KAART 3: KLEUR EN RGB
+             Dit onderdeel helpt bij het beoordelingscriterium over kleurmodellen. -->
+        <section class="kaart" id="rgb-voorbeeld" aria-labelledby="rgb-titel">
 
-</body>
-</html>
+            <!-- Titel van het RGB-onderdeel -->
+            <h2 id="rgb-titel">Kleur in het RGB-model</h2>
+
+            <!-- Uitleg over de drie kleuren waaruit RGB bestaat -->
+            <p>
+                RGB staat voor <strong>rood, groen en blauw</strong>.
+                Door deze drie
