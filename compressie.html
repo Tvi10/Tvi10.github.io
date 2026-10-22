@@ -1,29 +1,14 @@
-
+```html
 <!DOCTYPE html>
 <html lang="nl">
 
 <head>
-    <!-- Zorgt ervoor dat speciale Nederlandse tekens goed worden weergegeven. -->
     <meta charset="UTF-8">
-
-    <!-- Zorgt ervoor dat de website zich aanpast aan de breedte van het scherm,
-         bijvoorbeeld op een mobiele telefoon. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- De titel die in het browsertabblad verschijnt. -->
     <title>Compressie - Bitmap en Vector</title>
 
     <style>
-        /* =====================================
-           ALGEMENE INSTELLINGEN
-           ===================================== */
-
-        /* body bevat de volledige zichtbare pagina.
-           margin: 0 verwijdert de standaard buitenmarge.
-           font-family bepaalt het lettertype.
-           background-color bepaalt de achtergrondkleur.
-           color bepaalt de standaard tekstkleur.
-           line-height bepaalt de ruimte tussen tekstregels. */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -32,16 +17,6 @@
             line-height: 1.6;
         }
 
-
-        /* =====================================
-           HEADER: BOVENSTE GEDEELTE
-           ===================================== */
-
-        /* De header bevat de titel en ondertitel.
-           background maakt een verloop van blauw naar paars.
-           color maakt de tekst wit.
-           text-align centreert de tekst.
-           padding geeft ruimte binnen het element. */
         header {
             background: linear-gradient(135deg, #2563eb, #7c3aed);
             color: white;
@@ -49,25 +24,11 @@
             padding: 35px;
         }
 
-
-        /* =====================================
-           NAVIGATIE: HET MENU
-           ===================================== */
-
-        /* nav bevat de links naar de verschillende pagina's.
-           background-color geeft het menu een donkerblauwe achtergrond.
-           text-align centreert de links. */
         nav {
             background-color: #172554;
             text-align: center;
         }
 
-        /* nav a selecteert alle links binnen het menu.
-           display: inline-block maakt het mogelijk om ruimte toe te voegen.
-           color maakt de tekst wit.
-           text-decoration: none verwijdert de onderstreping.
-           padding maakt de klikbare gebieden groter.
-           font-weight maakt de tekst vet. */
         nav a {
             display: inline-block;
             color: white;
@@ -76,33 +37,16 @@
             font-weight: bold;
         }
 
-        /* :hover wordt actief wanneer je met de muis over een menu-link gaat.
-           De achtergrond verandert dan naar blauw. */
         nav a:hover {
             background-color: #2563eb;
         }
 
-
-        /* =====================================
-           HOOFDINHOUD
-           ===================================== */
-
-        /* main bevat de belangrijkste inhoud van de pagina.
-           max-width beperkt de maximale breedte tot 1000 pixels.
-           margin: auto centreert de inhoud horizontaal.
-           padding geeft ruimte tussen de inhoud en de rand. */
         main {
             max-width: 1000px;
             margin: auto;
             padding: 25px;
         }
 
-        /* .kaart selecteert alle elementen met class="kaart".
-           background-color maakt de kaarten wit.
-           padding geeft ruimte binnen de kaarten.
-           margin-bottom geeft ruimte tussen de kaarten.
-           border-radius maakt de hoeken rond.
-           box-shadow voegt een schaduw toe. */
         .kaart {
             background-color: white;
             padding: 25px;
@@ -111,33 +55,16 @@
             box-shadow: 0 4px 12px #bbb;
         }
 
-        /* Alle h2-koppen krijgen een blauwe tekstkleur. */
         h2 {
             color: #2563eb;
         }
 
-
-        /* =====================================
-           VERGELIJKING: BITMAP EN VECTOR
-           ===================================== */
-
-        /* .vergelijking is de container waarin de twee kolommen staan.
-           display: flex zet de kolommen naast elkaar.
-           gap bepaalt de ruimte tussen de kolommen.
-           flex-wrap zorgt ervoor dat kolommen naar een nieuwe regel
-           kunnen gaan als er onvoldoende ruimte is. */
         .vergelijking {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
         }
 
-        /* .kolom selecteert beide vergelijkingskolommen.
-           flex: 1 laat de kolommen de beschikbare ruimte verdelen.
-           min-width voorkomt dat een kolom te smal wordt.
-           background-color geeft de kolommen een lichtblauwe achtergrond.
-           padding geeft binnenruimte.
-           border-radius maakt de hoeken rond. */
         .kolom {
             flex: 1;
             min-width: 250px;
@@ -146,19 +73,6 @@
             border-radius: 12px;
         }
 
-
-        /* =====================================
-           VIDEO
-           ===================================== */
-
-        /* iframe wordt gebruikt om bijvoorbeeld een YouTube-video
-           binnen de website weer te geven.
-           width: 100% laat de video de beschikbare breedte gebruiken.
-           max-width beperkt de breedte tot 800 pixels.
-           height bepaalt de hoogte van de video.
-           border: none verwijdert de rand.
-           border-radius maakt de hoeken rond.
-           display: block en margin: auto centreren de video. */
         iframe {
             width: 100%;
             max-width: 800px;
@@ -169,16 +83,6 @@
             margin: 20px auto;
         }
 
-
-        /* =====================================
-           FOOTER: ONDERSTE GEDEELTE
-           ===================================== */
-
-        /* De footer staat onderaan de pagina.
-           background-color maakt de achtergrond donkerblauw.
-           color maakt de tekst wit.
-           text-align centreert de tekst.
-           padding geeft ruimte rondom de tekst. */
         footer {
             background-color: #172554;
             color: white;
@@ -186,45 +90,27 @@
             padding: 20px;
         }
 
-
-        /* =====================================
-           MOBIELE WEERGAVE
-           ===================================== */
-
-        /* Deze regels gelden voor schermen van maximaal 600 pixels breed.
-           De menu-links krijgen meer ruimte en de hoofdinhoud
-           blijft binnen de beschikbare schermbreedte. */
         @media (max-width: 600px) {
-
-            /* Vermindert de ruimte rond de titel op kleine schermen. */
             header {
                 padding: 25px 15px;
             }
 
-            /* Laat de navigatie-links op meerdere regels passen.
-               Dit voorkomt dat het menu buiten het scherm valt. */
             nav a {
                 padding: 12px 10px;
             }
 
-            /* Verkleint de ruimte rondom de hoofdinhoud. */
             main {
                 padding: 15px;
             }
 
-            /* Maakt de kaarten compacter op een mobiele telefoon. */
             .kaart {
                 padding: 18px;
             }
 
-            /* Maakt de video minder hoog op kleine schermen.
-               De breedte blijft automatisch aangepast aan het scherm. */
             iframe {
                 height: 240px;
             }
 
-            /* Laat beide kolommen de volledige beschikbare breedte gebruiken
-               wanneer ze onder elkaar komen te staan. */
             .kolom {
                 flex-basis: 100%;
             }
@@ -234,122 +120,61 @@
 
 <body>
 
-<!-- =====================================
-     HEADER
-     ===================================== -->
-
-<!-- Bovenaan de pagina staan de hoofdtitel en de ondertitel. -->
 <header>
     <h1>Compressie</h1>
     <p>Bitmap en vector</p>
 </header>
 
-
-<!-- =====================================
-     NAVIGATIE
-     ===================================== -->
-
-<!-- Dit menu verbindt de compressiepagina met de andere pagina's.
-     De href-attributen verwijzen naar de bestandsnamen van die pagina's. -->
 <nav aria-label="Hoofdnavigatie">
-
-    <!-- Link naar de homepage. -->
     <a href="index.html">Home</a>
-
-    <!-- Link naar invoer, verwerking en uitvoer. -->
     <a href="invoer.html">Invoer/Verwerking/Uitvoer</a>
-
-    <!-- Link naar de uitleg over het binaire stelsel. -->
     <a href="binair.html">Binair</a>
-
-    <!-- Link naar de uitleg over kleurmodellen. -->
     <a href="kleurmodellen.html">Kleurmodellen</a>
-
-    <!-- Link naar de huidige pagina over compressie. -->
     <a href="compressie.html" aria-current="page">Compressie</a>
-
-    <!-- Link naar de pagina over kunstmatige intelligentie. -->
     <a href="ai.html">AI</a>
-
 </nav>
 
-
-<!-- =====================================
-     HOOFDINHOUD
-     ===================================== -->
-
-<!-- main groepeert de belangrijkste informatie van de pagina. -->
 <main>
 
-    <!-- KAART 1: UITLEG OVER COMPRESSIE -->
     <section class="kaart">
-
-        <!-- h2 is een tussenkop. -->
         <h2>Wat is compressie?</h2>
-
-        <!-- Een paragraaf met de betekenis van compressie. -->
         <p>
             Compressie betekent dat een bestand kleiner wordt gemaakt.
             Hierdoor neemt het minder opslagruimte in en kan het
             sneller worden verstuurd via internet.
         </p>
-
     </section>
 
-
-    <!-- KAART 2: BITMAP -->
     <section class="kaart">
-
         <h2>Bitmap</h2>
-
-        <!-- Legt uit hoe een bitmapafbeelding is opgebouwd. -->
         <p>
             Een bitmapafbeelding bestaat uit heel veel kleine pixels.
             Elke pixel bevat informatie over de kleur.
         </p>
-
-        <!-- Geeft een voorbeeld van het gebruik van bitmaps. -->
         <p>
             Foto's zijn meestal bitmapafbeeldingen.
             Wanneer je sterk inzoomt, kun je de afzonderlijke pixels zien.
         </p>
-
     </section>
 
-
-    <!-- KAART 3: VECTOR -->
     <section class="kaart">
-
         <h2>Vector</h2>
-
-        <!-- Legt uit hoe vectorafbeeldingen zijn opgebouwd. -->
         <p>
             Een vectorafbeelding wordt opgebouwd uit lijnen,
             vormen en wiskundige berekeningen.
         </p>
-
-        <!-- Beschrijft een belangrijk voordeel van vectorafbeeldingen. -->
         <p>
             Een voordeel is dat je een vectorafbeelding heel groot
             kunt maken zonder dat deze wazig wordt.
         </p>
-
     </section>
 
-
-    <!-- KAART 4: VERGELIJKING -->
     <section class="kaart">
-
         <h2>Bitmap tegenover vector</h2>
 
-        <!-- Deze container groepeert de twee kolommen. -->
         <div class="vergelijking">
-
-            <!-- Eerste kolom: eigenschappen van bitmapafbeeldingen. -->
             <div class="kolom">
                 <h3>Bitmap</h3>
-
-                <!-- ul maakt een opsommingslijst. -->
                 <ul>
                     <li>Bestaat uit pixels</li>
                     <li>Goed voor foto's</li>
@@ -357,40 +182,24 @@
                 </ul>
             </div>
 
-            <!-- Tweede kolom: eigenschappen van vectorafbeeldingen. -->
             <div class="kolom">
                 <h3>Vector</h3>
-
                 <ul>
                     <li>Bestaat uit vormen en lijnen</li>
                     <li>Goed voor logo's</li>
                     <li>Kan zonder kwaliteitsverlies worden vergroot</li>
                 </ul>
             </div>
-
         </div>
-
     </section>
 
-
-    <!-- KAART 5: VIDEO -->
     <section class="kaart">
-
         <h2>Video</h2>
-
-        <!-- Vertelt de bezoeker waarom de video bij dit onderwerp staat. -->
         <p>
             Ik heb deze video toegevoegd omdat hij het verschil tussen
             bitmap en vector duidelijk uitlegt en met voorbeelden laat zien.
         </p>
 
-        <!-- iframe plaatst de YouTube-video rechtstreeks op de pagina.
-             src bevat de insluitlink van de video.
-             title beschrijft de video voor toegankelijkheid.
-             allowfullscreen laat de bezoeker de video op volledig scherm bekijken.
-
-             Controleer of de video beschikbaar is en insluiten toestaat.
-             Als de video niet werkt, moet je de insluitlink vervangen. -->
         <iframe
             src="https://www.youtube.com/embed/4KfW3G8b9rY"
             title="Video over bitmap en vector"
@@ -399,20 +208,14 @@
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen>
         </iframe>
-
     </section>
 
 </main>
 
-
-<!-- =====================================
-     FOOTER
-     ===================================== -->
-
-<!-- De footer sluit de pagina af. -->
 <footer>
     <p>Mijn Informatica Website</p>
 </footer>
 
 </body>
 </html>
+```
