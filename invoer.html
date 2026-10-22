@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -8,7 +9,6 @@
     <title>Invoer - Verwerking - Uitvoer</title>
 
     <style>
-        /* Algemene instellingen */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -17,7 +17,6 @@
             line-height: 1.6;
         }
 
-        /* Header */
         header {
             background: linear-gradient(135deg, #2563eb, #7c3aed);
             color: white;
@@ -25,7 +24,6 @@
             padding: 35px;
         }
 
-        /* Navigatiemenu */
         nav {
             background-color: #172554;
             text-align: center;
@@ -43,7 +41,6 @@
             background-color: #2563eb;
         }
 
-        /* Inhoud */
         main {
             max-width: 1000px;
             margin: auto;
@@ -86,6 +83,28 @@
             text-align: center;
             padding: 20px;
         }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 25px 15px;
+            }
+
+            nav a {
+                padding: 12px 10px;
+            }
+
+            main {
+                padding: 15px;
+            }
+
+            .kaart {
+                padding: 18px;
+            }
+
+            iframe {
+                height: 240px;
+            }
+        }
     </style>
 </head>
 
@@ -96,9 +115,9 @@
     <p>Hoe een computer informatie verwerkt</p>
 </header>
 
-<nav>
+<nav aria-label="Hoofdnavigatie">
     <a href="index.html">Home</a>
-    <a href="invoer.html">Invoer/Verwerking/Uitvoer</a>
+    <a href="invoer.html" aria-current="page">Invoer/Verwerking/Uitvoer</a>
     <a href="binair.html">Binair</a>
     <a href="kleurmodellen.html">Kleurmodellen</a>
     <a href="compressie.html">Compressie</a>
@@ -127,7 +146,6 @@
     </section>
 
     <section class="kaart">
-
         <h2>1. Invoer</h2>
 
         <p>
@@ -151,11 +169,9 @@
             Dit kan bijvoorbeeld op een beeldscherm,
             printer of via luidsprekers.
         </p>
-
     </section>
 
     <section class="kaart">
-
         <h2>Video</h2>
 
         <p>
@@ -163,21 +179,18 @@
             manier uitlegt hoe invoer, verwerking en uitvoer samenwerken.
         </p>
 
-       ```html
-<p>
-    Bekijk de video over invoer, verwerking en uitvoer:
-</p>
-```html
-<iframe
-    src="https://www.youtube.com/embed/Zqcoak3r664"
-    title="Video over invoer, verwerking en uitvoer"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-</iframe>
+        <p>
+            Bekijk de video over invoer, verwerking en uitvoer:
+        </p>
 
-
-           
-
+        <iframe
+            src="https://www.youtube.com/embed/Zqcoak3r664"
+            title="Video over invoer, verwerking en uitvoer"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
     </section>
 
 </main>
@@ -188,3 +201,4 @@
 
 </body>
 </html>
+```
